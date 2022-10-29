@@ -7,7 +7,7 @@ class outraPagina extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Bem vindo a pagina 2"),
+        title: Text("Bem vindo Professor"),
       ) ,
         body: Container(
             child: Center(
