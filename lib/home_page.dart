@@ -26,29 +26,29 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Satisfaction'),
+        title: Text('Satisfaction Survey'),
       ),
       body: Center(
-        child: FutureBuilder<List<Avaliacao>>(
-         future: avaliar,
-          builder: (context, snapshot){
-           if(snapshot.hasData){
-             return ListView.builder(
-                 itemCount: snapshot.data!.length,
-                 itemBuilder: (context, index) {
-                   Avaliacao avaliacao = snapshot.data![index];
-                   return ListTile(
-                     title: Text(avaliacao.comentario!),
-
-
-                   );
-                 } );
-           }else if(snapshot.hasError){
-             return Text(snapshot.error.toString());
-           }
-           return const CircularProgressIndicator();
-          },
-        )
+          child: FutureBuilder<List<Avaliacao>>(
+            future: avaliar,
+            builder: (context, snapshot){
+              if(snapshot.hasData){
+                return ListView.builder(
+                    itemCount: snapshot.data!.length,
+                    itemBuilder: (context, index) {
+                      Avaliacao avaliacao = snapshot.data![index];
+                      return ListTile(
+                        title: Text('Disciplina: '+ avaliacao.idDisciplinaNavigation!.nomeDisciplina.toString()),
+                        subtitle: Text('Comentario: '+ avaliacao.comentario!),
+                        trailing: Text('Nota: ' + avaliacao.nota.toString()),
+                      );
+                    } );
+              }else if(snapshot.hasError){
+                return Text(snapshot.error.toString());
+              }
+              return const CircularProgressIndicator();
+            },
+          )
       ),
     );
   }
