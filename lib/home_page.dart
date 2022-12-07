@@ -38,16 +38,20 @@ class _HomePageState extends State<HomePage> {
                 itemBuilder: (context, index) {
                   Avaliacao avaliacao = snapshot.data![index];
                   return Card(
-                    clipBehavior: Clip.antiAlias,
-                    child: Column(
-                      children: [
-                        ListTile(
-                          title: Text('Disciplina: ' + avaliacao.idDisciplinaNavigation!.nomeDisciplina.toString()),
-                          subtitle: Text('Comentario: ' + avaliacao.comentario!),
-                          trailing: Text('Nota: ' + avaliacao.nota.toString()),
-                        ),
-                      ],
+                    child: SizedBox(
+                      width: 50,
+                      height:70,
+                      child: Column(
+                        children: [
+                          ListTile(
+                            title: Text('Disciplina: ' + avaliacao.idDisciplinaNavigation!.nomeDisciplina.toString()),
+                            subtitle: Text('Comentario: ' + avaliacao.comentario!),
+                            trailing: Text('Nota: ' + avaliacao.nota.toString()),
+                          ),
+                        ],
+                      ),
                     ),
+
                   );
                 });
           } else if (snapshot.hasError) {
